@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 
-export type Post = {
+type Post = {
   id: number
   title: string
   body: string
 }
 
-const fetchPosts = async (limit = 10): Promise<Array<Post>> => {
+const fetchPosts = async (limit = 10): Promise<Post[]> => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts')
   const data = await response.json()
   return data.filter((x: Post) => x.id <= limit)
