@@ -7,14 +7,14 @@ type Post = {
 }
 
 const fetchPosts = async (limit = 10): Promise<Post[]> => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts")
   const data = await response.json()
   return data.filter((x: Post) => x.id <= limit)
 }
 
 const usePosts = (limit: number) => {
   return useQuery({
-    queryKey: ['posts', limit],
+    queryKey: ['posts', "", limit],
     queryFn: () => fetchPosts(limit),
   })
 }
